@@ -24,12 +24,26 @@ class Filter {
     selector: 'perks',
     template: `
       <input type="text" [(ng-model)]="filter.character_level" placeholder="Level" /><br />
+
+      <div id="strength"></div>
       <input type="text" [(ng-model)]="filter.STR_level" placeholder="STR" />
+
+      <div id="perception"></div>
       <input type="text" [(ng-model)]="filter.PER_level" placeholder="PER" />
+
+      <div id="endurance"></div>
       <input type="text" [(ng-model)]="filter.END_level" placeholder="END" />
+
+      <div id="charisma"></div>
       <input type="text" [(ng-model)]="filter.CHA_level" placeholder="CHA" />
+
+      <div id="intelligence"></div>
       <input type="text" [(ng-model)]="filter.INT_level" placeholder="INT" />
+
+      <div id="agility"></div>
       <input type="text" [(ng-model)]="filter.AGI_level" placeholder="AGI" />
+
+      <div id="luck"></div>
       <input type="text" [(ng-model)]="filter.LCK_level" placeholder="LCK" />
 
       <ul class="perks">
