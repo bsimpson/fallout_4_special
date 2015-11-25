@@ -23,34 +23,105 @@ class Filter {
 @Component({
     selector: 'perks',
     template: `
-      <input type="text" [(ng-model)]="filter.character_level" placeholder="Level" /><br />
+    <form>
+      <div class="column small-6 small-left">
+        <div class="row">
+          <div class="column small-12">
+            <label>Character Level
+              <input type="number" [(ng-model)]="filter.character_level" />
+            </label>
+          </div>
+        </div>
+        <div class="row small-up-1 medium-up-3">
+          <div class="column">
+            <div class="perk">
+              <div id="strength"></div>
+            </div>
+            <label>Strength (STR)
+              <input type="number" [(ng-model)]="filter.STR_level" />
+            </label>
+          </div>
 
-      <div id="strength"></div>
-      <input type="text" [(ng-model)]="filter.STR_level" placeholder="STR" />
+          <div class="column">
+            <div class="perk">
+              <div id="perception"></div>
+            </div>
+            <label>Perception (PER)
+              <input type="number" [(ng-model)]="filter.PER_level" />
+            </label>
+          </div>
 
-      <div id="perception"></div>
-      <input type="text" [(ng-model)]="filter.PER_level" placeholder="PER" />
+          <div class="column">
+            <div class="perk">
+              <div id="endurance"></div>
+            </div>
+            <label>Endurance (END)
+              <input type="number" [(ng-model)]="filter.END_level" />
+            </label>
+          </div>
 
-      <div id="endurance"></div>
-      <input type="text" [(ng-model)]="filter.END_level" placeholder="END" />
+          <div class="column">
+            <div class="perk">
+              <div id="charisma"></div>
+            </div>
+            <label>Charisma (CHA)
+              <input type="number" [(ng-model)]="filter.CHA_level" />
+            </label>
+          </div>
 
-      <div id="charisma"></div>
-      <input type="text" [(ng-model)]="filter.CHA_level" placeholder="CHA" />
+          <div class="column">
+            <div class="perk">
+              <div id="intelligence"></div>
+            </div>
+            <label>Intelligence (INT)
+              <input type="number" [(ng-model)]="filter.INT_level" />
+            </label>
+          </div>
 
-      <div id="intelligence"></div>
-      <input type="text" [(ng-model)]="filter.INT_level" placeholder="INT" />
+          <div class="column">
+            <div class="perk">
+              <div id="agility"></div>
+            </div>
+            <label>Agility (AGI)
+              <input type="number" [(ng-model)]="filter.AGI_level" />
+            </label>
+          </div>
 
-      <div id="agility"></div>
-      <input type="text" [(ng-model)]="filter.AGI_level" placeholder="AGI" />
+          <div class="column">
+            <div class="perk">
+              <div id="luck"></div>
+            </div>
+            <label>Luck (LCK)
+              <input type="number" [(ng-model)]="filter.LCK_level" />
+            </label>
+          </div>
+        </div>
+      </div>
 
-      <div id="luck"></div>
-      <input type="text" [(ng-model)]="filter.LCK_level" placeholder="LCK" />
-
-      <ul class="perks">
-        <li *ng-for="#perk of applicablePerks()">
-          <span>{{perk.name}} {{perk.rank}} {{perk.attribute_name}} {{perk.attribute_level}} {{perk.character_level}} {{perk.description}}</span>
-        </li>
-      </ul>
+      <div class="column small-6 small-right">
+        <div *ng-if="applicablePerks().length > 0">
+          <ul class="perks">
+            <li *ng-for="#perk of applicablePerks()">
+              <div>
+                <strong>{{perk.name}} (Level {{perk.rank}})</strong>
+              </div>
+              <div>
+                <em>
+                  Requires {{perk.attribute_name}} >= {{perk.attribute_level}},
+                  Character level {{perk.character_level}}
+                </em>
+              </div>
+              <div>
+                <blockquote>{{perk.description}}</blockquote>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div *ng-if="applicablePerks().length <= 0">
+          <em>No perks match your filter. Try expanding your search...</em>
+        </div>
+      </div>
+    </form>
     `,
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
@@ -58,6 +129,14 @@ class Filter {
 class AppComponent {
   public perks = PERKS;
   public filter: Filter {
+    STR_level: 0;
+    PER_level: 0;
+    END_level: 0;
+    CHA_level: 0;
+    INT_level: 0;
+    AGI_level: 0;
+    LCK_level: 0;
+    character_level: 0;
   }
 
   applicablePerks() {

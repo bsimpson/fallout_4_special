@@ -23,7 +23,16 @@ var Filter = (function () {
 var AppComponent = (function () {
     function AppComponent() {
         this.perks = PERKS;
-        this.filter = {};
+        this.filter = {
+            STR_level: 0,
+            PER_level: 0,
+            END_level: 0,
+            CHA_level: 0,
+            INT_level: 0,
+            AGI_level: 0,
+            LCK_level: 0,
+            character_level: 0
+        };
     }
     AppComponent.prototype.applicablePerks = function () {
         _this = this;
@@ -45,7 +54,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         angular2_1.Component({
             selector: 'perks',
-            template: "\n      <input type=\"text\" [(ng-model)]=\"filter.character_level\" placeholder=\"Level\" /><br />\n\n      <div id=\"strength\"></div>\n      <input type=\"text\" [(ng-model)]=\"filter.STR_level\" placeholder=\"STR\" />\n\n      <div id=\"perception\"></div>\n      <input type=\"text\" [(ng-model)]=\"filter.PER_level\" placeholder=\"PER\" />\n\n      <div id=\"endurance\"></div>\n      <input type=\"text\" [(ng-model)]=\"filter.END_level\" placeholder=\"END\" />\n\n      <div id=\"charisma\"></div>\n      <input type=\"text\" [(ng-model)]=\"filter.CHA_level\" placeholder=\"CHA\" />\n\n      <div id=\"intelligence\"></div>\n      <input type=\"text\" [(ng-model)]=\"filter.INT_level\" placeholder=\"INT\" />\n\n      <div id=\"agility\"></div>\n      <input type=\"text\" [(ng-model)]=\"filter.AGI_level\" placeholder=\"AGI\" />\n\n      <div id=\"luck\"></div>\n      <input type=\"text\" [(ng-model)]=\"filter.LCK_level\" placeholder=\"LCK\" />\n\n      <ul class=\"perks\">\n        <li *ng-for=\"#perk of applicablePerks()\">\n          <span>{{perk.name}} {{perk.rank}} {{perk.attribute_name}} {{perk.attribute_level}} {{perk.character_level}} {{perk.description}}</span>\n        </li>\n      </ul>\n    ",
+            template: "\n    <form>\n      <div class=\"column small-6 small-left\">\n        <div class=\"row\">\n          <div class=\"column small-12\">\n            <label>Character Level\n              <input type=\"number\" [(ng-model)]=\"filter.character_level\" />\n            </label>\n          </div>\n        </div>\n        <div class=\"row small-up-1 medium-up-3\">\n          <div class=\"column\">\n            <div class=\"perk\">\n              <div id=\"strength\"></div>\n            </div>\n            <label>Strength (STR)\n              <input type=\"number\" [(ng-model)]=\"filter.STR_level\" />\n            </label>\n          </div>\n\n          <div class=\"column\">\n            <div class=\"perk\">\n              <div id=\"perception\"></div>\n            </div>\n            <label>Perception (PER)\n              <input type=\"number\" [(ng-model)]=\"filter.PER_level\" />\n            </label>\n          </div>\n\n          <div class=\"column\">\n            <div class=\"perk\">\n              <div id=\"endurance\"></div>\n            </div>\n            <label>Endurance (END)\n              <input type=\"number\" [(ng-model)]=\"filter.END_level\" />\n            </label>\n          </div>\n\n          <div class=\"column\">\n            <div class=\"perk\">\n              <div id=\"charisma\"></div>\n            </div>\n            <label>Charisma (CHA)\n              <input type=\"number\" [(ng-model)]=\"filter.CHA_level\" />\n            </label>\n          </div>\n\n          <div class=\"column\">\n            <div class=\"perk\">\n              <div id=\"intelligence\"></div>\n            </div>\n            <label>Intelligence (INT)\n              <input type=\"number\" [(ng-model)]=\"filter.INT_level\" />\n            </label>\n          </div>\n\n          <div class=\"column\">\n            <div class=\"perk\">\n              <div id=\"agility\"></div>\n            </div>\n            <label>Agility (AGI)\n              <input type=\"number\" [(ng-model)]=\"filter.AGI_level\" />\n            </label>\n          </div>\n\n          <div class=\"column\">\n            <div class=\"perk\">\n              <div id=\"luck\"></div>\n            </div>\n            <label>Luck (LCK)\n              <input type=\"number\" [(ng-model)]=\"filter.LCK_level\" />\n            </label>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"column small-6 small-right\">\n        <div *ng-if=\"applicablePerks().length > 0\">\n          <ul class=\"perks\">\n            <li *ng-for=\"#perk of applicablePerks()\">\n              <div>\n                <strong>{{perk.name}} (Level {{perk.rank}})</strong>\n              </div>\n              <div>\n                <em>\n                  Requires {{perk.attribute_name}} >= {{perk.attribute_level}},\n                  Character level {{perk.character_level}}\n                </em>\n              </div>\n              <div>\n                <blockquote>{{perk.description}}</blockquote>\n              </div>\n            </li>\n          </ul>\n        </div>\n        <div *ng-if=\"applicablePerks().length <= 0\">\n          <em>No perks match your filter. Try expanding your search...</em>\n        </div>\n      </div>\n    </form>\n    ",
             directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])

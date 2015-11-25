@@ -1,6 +1,12 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
   <head>
-    <title>Angular 2 QuickStart</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fallout 4 Interactive S.P.E.C.I.A.L. Chart</title>
+    <link rel="stylesheet" href="/assets/css/foundation.css" />
+    <link rel="stylesheet" href="/assets/css/app.css" />
     <script src="../node_modules/systemjs/dist/system.src.js"></script>
     <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
     <script>
@@ -12,58 +18,32 @@
   </head>
   <body>
 
-    <perks>Loading...</perks>
+    <div class="row">
+      <div class="column title">
+        <h1>Fallout 4 Interactive S.P.E.C.I.A.L. Chart</h1>
+      </div>
+    </div>
+    <div class="row">
+      <perks>Loading...</perks>
+    </div>
+    <div class="row">
+      <div class="column">
+        Attributions:
+        <ul>
+          <li>http://www.spritecow.com</li>
+          <li>http://foundation.zurb.com</li>
+          <li>https://angular.io</li>
+          <li>Perk chart sprite by http://footthumb.com</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      Created by Ben Simpson
+    </div>
+
+    <script src="/assets/js/vendor/jquery.min.js"></script>
+    <script src="/assets/js/vendor/what-input.min.js"></script>
+    <script src="/assets/js/foundation.min.js"></script>
+    <script src="/assets/js/app.js"></script>
   </body>
-
-  <style type="text/css">
-    .perk_chart {
-      background: url('/assets/perks.png') 0 0;
-      width: 1597px;
-      height: 2299px;
-    }
-
-    #strength {
-      background: url('/assets/perks.png') no-repeat -75px -96px;
-      width: 129px;
-      height: 144px;
-    }
-
-    #perception {
-      background: url('/assets/perks.png') no-repeat -242px -76px;
-      width: 211px;
-      height: 165px;
-    }
-
-    #endurance {
-      background: url('/assets/perks.png') no-repeat -485px -94px;
-      width: 154px;
-      height: 144px;
-    }
-
-    #charisma {
-      background: url('/assets/perks.png') no-repeat -712px -102px;
-      width: 114px;
-      height: 140px;
-    }
-
-    #intelligence {
-      background: url('/assets/perks.png') no-repeat -932px -84px;
-      width: 198px;
-      height: 169px;
-    }
-
-    #agility {
-      background: url('/assets/perks.png') no-repeat -1144px -104px;
-      width: 163px;
-      height: 134px;
-    }
-
-    #luck {
-      background: url('/assets/perks.png') no-repeat -1385px -92px;
-      width: 177px;
-      height: 156px;
-    }
-
-
-  </style>
 </html>
