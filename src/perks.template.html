@@ -74,26 +74,19 @@
   </div>
 
   <div class="column small-6 small-right">
-    <div *ng-if="applicablePerks().length > 0">
-      <ul class="perks">
-        <li *ng-for="#perk of applicablePerks()">
-          <div>
-            <strong>{{perk.name}} (Level {{perk.rank}})</strong>
-          </div>
-          <div>
-            <em>
-              Requires {{perk.attribute_name}} >= {{perk.attribute_level}},
-              Character level {{perk.character_level}}
-            </em>
-          </div>
-          <div>
+    <ul class="vertical menu" data-accordion-menu>
+      <li *ng-for="#perk of perks">
+        <a href="#">
+          {{perk.name}} (Level {{perk.rank}})
+          Requires {{perk.attribute_name}} {{perk.attribute_level}},
+          Character level {{perk.character_level}}
+        </a>
+        <ul class="menu vertical nested">
+          <li>
             <blockquote>{{perk.description}}</blockquote>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div *ng-if="applicablePerks().length <= 0">
-      <em>No perks match your filter. Try expanding your search...</em>
-    </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </form>

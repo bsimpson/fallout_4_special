@@ -14,6 +14,21 @@ var perk_data_1 = require('./perk_data');
 var Perk = (function () {
     function Perk() {
     }
+    Perk.prototype.isApplicable = function (filter) {
+        if (perk.character_level > _this.filter.character_level) {
+            return false;
+        }
+        if ((perk.attribute_name == 'STR' && perk.attribute_level <= _this.filter.STR_level) ||
+            (perk.attribute_name == 'PER' && perk.attribute_level <= _this.filter.PER_level) ||
+            (perk.attribute_name == 'END' && perk.attribute_level <= _this.filter.END_level) ||
+            (perk.attribute_name == 'CHA' && perk.attribute_level <= _this.filter.CHA_level) ||
+            (perk.attribute_name == 'INT' && perk.attribute_level <= _this.filter.INT_level) ||
+            (perk.attribute_name == 'AGI' && perk.attribute_level <= _this.filter.AGI_level) ||
+            (perk.attribute_name == 'LCK' && perk.attribute_level <= _this.filter.LCK_level)) {
+            return true;
+        }
+    };
+    ;
     return Perk;
 })();
 var Filter = (function () {
@@ -36,23 +51,6 @@ var AppComponent = (function () {
             character_level: 0
         };
     }
-    AppComponent.prototype.applicablePerks = function () {
-        _this = this;
-        return this.perks.filter(function (perk) {
-            if (perk.character_level > _this.filter.character_level) {
-                return false;
-            }
-            if ((perk.attribute_name == 'STR' && perk.attribute_level <= _this.filter.STR_level) ||
-                (perk.attribute_name == 'PER' && perk.attribute_level <= _this.filter.PER_level) ||
-                (perk.attribute_name == 'END' && perk.attribute_level <= _this.filter.END_level) ||
-                (perk.attribute_name == 'CHA' && perk.attribute_level <= _this.filter.CHA_level) ||
-                (perk.attribute_name == 'INT' && perk.attribute_level <= _this.filter.INT_level) ||
-                (perk.attribute_name == 'AGI' && perk.attribute_level <= _this.filter.AGI_level) ||
-                (perk.attribute_name == 'LCK' && perk.attribute_level <= _this.filter.LCK_level)) {
-                return true;
-            }
-        });
-    };
     AppComponent = __decorate([
         angular2_1.Component({
             selector: 'perks',
@@ -63,5 +61,7 @@ var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 })();
-angular2_1.bootstrap(AppComponent);
+angular2_1.bootstrap(AppComponent).then(function () {
+    $(document).foundation();
+});
 //# sourceMappingURL=app.js.map

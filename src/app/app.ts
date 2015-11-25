@@ -8,6 +8,24 @@ class Perk {
   attribute_level: number;
   character_level: number;
   description: string;
+
+  isApplicable(filter) {
+    if (perk.character_level > _this.filter.character_level) {
+      return false;
+    }
+
+    if (
+      (perk.attribute_name == 'STR' && perk.attribute_level <= _this.filter.STR_level) ||
+      (perk.attribute_name == 'PER' && perk.attribute_level <= _this.filter.PER_level) ||
+      (perk.attribute_name == 'END' && perk.attribute_level <= _this.filter.END_level) ||
+      (perk.attribute_name == 'CHA' && perk.attribute_level <= _this.filter.CHA_level) ||
+      (perk.attribute_name == 'INT' && perk.attribute_level <= _this.filter.INT_level) ||
+      (perk.attribute_name == 'AGI' && perk.attribute_level <= _this.filter.AGI_level) ||
+      (perk.attribute_name == 'LCK' && perk.attribute_level <= _this.filter.LCK_level) ) {
+        return true;
+      }
+    });
+  }
 }
 
 class Filter {
@@ -30,6 +48,7 @@ var PERKS: Perk[] = perkData;
 })
 
 class AppComponent {
+
   public perks = PERKS;
   public filter: Filter {
     STR_level: 1;
@@ -41,26 +60,8 @@ class AppComponent {
     LCK_level: 0;
     character_level: 0;
   }
-
-  applicablePerks() {
-    _this = this;
-    return this.perks.filter(function(perk) {
-    if (perk.character_level > _this.filter.character_level) {
-      return false;
-    }
-
-    if (
-      (perk.attribute_name == 'STR' && perk.attribute_level <= _this.filter.STR_level) ||
-      (perk.attribute_name == 'PER' && perk.attribute_level <= _this.filter.PER_level) ||
-      (perk.attribute_name == 'END' && perk.attribute_level <= _this.filter.END_level) ||
-      (perk.attribute_name == 'CHA' && perk.attribute_level <= _this.filter.CHA_level) ||
-      (perk.attribute_name == 'INT' && perk.attribute_level <= _this.filter.INT_level) ||
-      (perk.attribute_name == 'AGI' && perk.attribute_level <= _this.filter.AGI_level) ||
-      (perk.attribute_name == 'LCK' && perk.attribute_level <= _this.filter.LCK_level) ) {
-        return true;
-      }
-    });
-  }
 }
 
-bootstrap(AppComponent);
+bootstrap(AppComponent).then(function() {
+  $(document).foundation()
+});
