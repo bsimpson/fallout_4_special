@@ -2,12 +2,21 @@ import {bootstrap, Component, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/a
 import {perkData} from './perk_data';
 
 class Perk {
-  name: string;
-  rank: number;
-  attribute_name: string;
-  attribute_level: number;
-  character_level: number;
-  description: string;
+  name:             string;
+  rank:             number;
+  attribute_name:   string;
+  attribute_level:  number;
+  character_level:  number;
+  description:      string;
+
+  constructor(options) {
+    this.name            = options.name;
+    this.rank            = options.rank;
+    this.attribute_name  = options.attribute_name;
+    this.attribute_level = options.attribute_level;
+    this.character_level = options.character_level;
+    this.description     = options.description;
+  }
 
   isApplicable(filter) {
     if (perk.character_level > _this.filter.character_level) {
@@ -15,16 +24,16 @@ class Perk {
     }
 
     if (
-      (perk.attribute_name == 'STR' && perk.attribute_level <= _this.filter.STR_level) ||
-      (perk.attribute_name == 'PER' && perk.attribute_level <= _this.filter.PER_level) ||
-      (perk.attribute_name == 'END' && perk.attribute_level <= _this.filter.END_level) ||
-      (perk.attribute_name == 'CHA' && perk.attribute_level <= _this.filter.CHA_level) ||
-      (perk.attribute_name == 'INT' && perk.attribute_level <= _this.filter.INT_level) ||
-      (perk.attribute_name == 'AGI' && perk.attribute_level <= _this.filter.AGI_level) ||
-      (perk.attribute_name == 'LCK' && perk.attribute_level <= _this.filter.LCK_level) ) {
+      (this.attribute_name == 'STR' && this.attribute_level <= _this.filter.STR_level) ||
+      (this.attribute_name == 'PER' && this.attribute_level <= _this.filter.PER_level) ||
+      (this.attribute_name == 'END' && this.attribute_level <= _this.filter.END_level) ||
+      (this.attribute_name == 'CHA' && this.attribute_level <= _this.filter.CHA_level) ||
+      (this.attribute_name == 'INT' && this.attribute_level <= _this.filter.INT_level) ||
+      (this.attribute_name == 'AGI' && this.attribute_level <= _this.filter.AGI_level) ||
+      (this.attribute_name == 'LCK' && this.attribute_level <= _this.filter.LCK_level) ) {
         return true;
       }
-    });
+    }
   }
 }
 
@@ -39,7 +48,9 @@ class Filter {
   character_level: number;
 }
 
-var PERKS: Perk[] = perkData;
+var PERKS: Perk[] = perkData.map(function(data) {
+  return new Perk(data);
+});
 
 @Component({
     selector: 'perks',
@@ -63,5 +74,5 @@ class AppComponent {
 }
 
 bootstrap(AppComponent).then(function() {
-  $(document).foundation()
+  $(document).foundation();
 });

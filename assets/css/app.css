@@ -56,3 +56,19 @@
 .title {
   text-align: center;
 }
+
+.rank_1:after {
+  content: "\22C6";
+}
+.rank_2:after {
+  content: "\22C6\22C6";
+}
+.rank_3:after {
+  content: "\22C6\22C6\22C6";
+}
+.rank_4:after {
+  content: "\22C6\22C6\22C6\22C6";
+}
+.rank_5:after {
+  content: "\22C6\22C6\22C6\22C6\22C6";
+}

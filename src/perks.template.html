@@ -75,9 +75,9 @@
 
   <div class="column small-6 small-right">
     <ul class="vertical menu" data-accordion-menu>
-      <li *ng-for="#perk of perks">
+      <li *ng-for="#perk of perks" *ng-bind-html>
         <a href="#">
-          {{perk.name}} (Level {{perk.rank}})
+          {{perk.name}} (<span class="rank_{{perk.rank}}"></span>)
           Requires {{perk.attribute_name}} {{perk.attribute_level}},
           Character level {{perk.character_level}}
         </a>
