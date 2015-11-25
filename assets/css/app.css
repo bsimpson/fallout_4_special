@@ -72,3 +72,7 @@
 .rank_5:after {
   content: "\22C6\22C6\22C6\22C6\22C6";
 }
+
+.not_eligible {
+  color: red;
+}

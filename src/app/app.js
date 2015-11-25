@@ -20,19 +20,23 @@ var Perk = (function () {
         this.character_level = options.character_level;
         this.description = options.description;
     }
-    Perk.prototype.isApplicable = function (filter) {
-        if (perk.character_level > _this.filter.character_level) {
+    Perk.prototype.isEligibleCharacterLevel = function (filter) {
+        if (this.character_level > filter.character_level) {
             return false;
         }
-        if ((this.attribute_name == 'STR' && this.attribute_level <= _this.filter.STR_level) ||
-            (this.attribute_name == 'PER' && this.attribute_level <= _this.filter.PER_level) ||
-            (this.attribute_name == 'END' && this.attribute_level <= _this.filter.END_level) ||
-            (this.attribute_name == 'CHA' && this.attribute_level <= _this.filter.CHA_level) ||
-            (this.attribute_name == 'INT' && this.attribute_level <= _this.filter.INT_level) ||
-            (this.attribute_name == 'AGI' && this.attribute_level <= _this.filter.AGI_level) ||
-            (this.attribute_name == 'LCK' && this.attribute_level <= _this.filter.LCK_level)) {
+        return true;
+    };
+    Perk.prototype.isEligibleAttributeLevel = function (filter) {
+        if ((this.attribute_name == 'STR' && this.attribute_level <= filter.STR_level) ||
+            (this.attribute_name == 'PER' && this.attribute_level <= filter.PER_level) ||
+            (this.attribute_name == 'END' && this.attribute_level <= filter.END_level) ||
+            (this.attribute_name == 'CHA' && this.attribute_level <= filter.CHA_level) ||
+            (this.attribute_name == 'INT' && this.attribute_level <= filter.INT_level) ||
+            (this.attribute_name == 'AGI' && this.attribute_level <= filter.AGI_level) ||
+            (this.attribute_name == 'LCK' && this.attribute_level <= filter.LCK_level)) {
             return true;
         }
+        return false;
     };
     return Perk;
 })();
@@ -48,7 +52,7 @@ var AppComponent = (function () {
     function AppComponent() {
         this.perks = PERKS;
         this.filter = {
-            STR_level: 1,
+            STR_level: 0,
             PER_level: 0,
             END_level: 0,
             CHA_level: 0,
