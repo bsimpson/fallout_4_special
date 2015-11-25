@@ -15,14 +15,20 @@ var Perk = (function () {
     }
     return Perk;
 })();
+var Filter = (function () {
+    function Filter() {
+    }
+    return Filter;
+})();
 var AppComponent = (function () {
     function AppComponent() {
         this.perks = PERKS;
+        this.filter = {};
     }
     AppComponent = __decorate([
         angular2_1.Component({
             selector: 'perks',
-            template: "\n      <ul class=\"perks\">\n        <li *ng-for=\"#perk of perks\">\n          <span>{{perk.name}} {{perk.rank}} {{perk.attribute_name}} {{perk.attribute_level}} {{perk.character_level}} {{perk.description}}</span>\n        </li>\n      </ul>\n\n\n    ",
+            template: "\n    <input type=\"text\" [(ng-model)]=\"filter.character_level\" placeholder=\"Level\" /><br />\n      <input type=\"text\" [(ng-model)]=\"filter.STR_level\" placeholder=\"STR\" />\n      <input type=\"text\" [(ng-model)]=\"filter.PER_level\" placeholder=\"PER\" />\n      <input type=\"text\" [(ng-model)]=\"filter.END_level\" placeholder=\"END\" />\n      <input type=\"text\" [(ng-model)]=\"filter.CHA_level\" placeholder=\"CHA\" />\n      <input type=\"text\" [(ng-model)]=\"filter.INT_level\" placeholder=\"INT\" />\n      <input type=\"text\" [(ng-model)]=\"filter.AGI_level\" placeholder=\"AGI\" />\n      <input type=\"text\" [(ng-model)]=\"filter.LCK_level\" placeholder=\"LCK\" />\n\n      <ul class=\"perks\">\n        <li *ng-for=\"#perk of perks\">\n          <span>{{perk.name}} {{perk.rank}} {{perk.attribute_name}} {{perk.attribute_level}} {{perk.character_level}} {{perk.description}}</span>\n        </li>\n      </ul>\n    ",
             directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])
@@ -30,18 +36,6 @@ var AppComponent = (function () {
     return AppComponent;
 })();
 angular2_1.bootstrap(AppComponent);
-var HEROES = [
-    { "id": 11, "name": "Mr. Nice" },
-    { "id": 12, "name": "Narco" },
-    { "id": 13, "name": "Bombasto" },
-    { "id": 14, "name": "Celeritas" },
-    { "id": 15, "name": "Magneta" },
-    { "id": 16, "name": "RubberMan" },
-    { "id": 17, "name": "Dynama" },
-    { "id": 18, "name": "Dr IQ" },
-    { "id": 19, "name": "Magma" },
-    { "id": 20, "name": "Tornado" }
-];
 var PERKS = [
     { "name": "Iron Fist", "rank": 1, "attribute_name": "STR", "attribute_level": 1, "character_level": 0, "description": "Channel your chi to unleash devastating fury! Punching attacks do 20% more damage to your opponent." },
     { "name": "Iron Fist", "rank": 2, "attribute_name": "STR", "attribute_level": 1, "character_level": 9, "description": "Punching attacks now do 40% more damage and can disarm your opponent." },

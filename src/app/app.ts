@@ -9,38 +9,44 @@ class Perk {
   description: string;
 }
 
+class Filter {
+  STR_level: number;
+  PER_level: number;
+  END_level: number;
+  CHA_level: number;
+  INT_level: number;
+  AGI_level: number;
+  LCK_level: number;
+  character_level: number;
+}
+
 @Component({
     selector: 'perks',
     template: `
+    <input type="text" [(ng-model)]="filter.character_level" placeholder="Level" /><br />
+      <input type="text" [(ng-model)]="filter.STR_level" placeholder="STR" />
+      <input type="text" [(ng-model)]="filter.PER_level" placeholder="PER" />
+      <input type="text" [(ng-model)]="filter.END_level" placeholder="END" />
+      <input type="text" [(ng-model)]="filter.CHA_level" placeholder="CHA" />
+      <input type="text" [(ng-model)]="filter.INT_level" placeholder="INT" />
+      <input type="text" [(ng-model)]="filter.AGI_level" placeholder="AGI" />
+      <input type="text" [(ng-model)]="filter.LCK_level" placeholder="LCK" />
+
       <ul class="perks">
         <li *ng-for="#perk of perks">
           <span>{{perk.name}} {{perk.rank}} {{perk.attribute_name}} {{perk.attribute_level}} {{perk.character_level}} {{perk.description}}</span>
         </li>
       </ul>
-
-
     `,
     directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 
 class AppComponent {
   public perks = PERKS;
+  public filter: Filter { }
 }
 
 bootstrap(AppComponent);
-
-var HEROES: Hero[] = [
-  { "id": 11, "name": "Mr. Nice" },
-  { "id": 12, "name": "Narco" },
-  { "id": 13, "name": "Bombasto" },
-  { "id": 14, "name": "Celeritas" },
-  { "id": 15, "name": "Magneta" },
-  { "id": 16, "name": "RubberMan" },
-  { "id": 17, "name": "Dynama" },
-  { "id": 18, "name": "Dr IQ" },
-  { "id": 19, "name": "Magma" },
-  { "id": 20, "name": "Tornado" }
-];
 
 var PERKS: Perk[] = [
   { "name": "Iron Fist",                 "rank": 1,  "attribute_name": "STR",  "attribute_level": 1,   "character_level":0,   "description": "Channel your chi to unleash devastating fury! Punching attacks do 20% more damage to your opponent." },
