@@ -25,10 +25,24 @@ var AppComponent = (function () {
         this.perks = PERKS;
         this.filter = {};
     }
+    AppComponent.prototype.applicablePerks = function () {
+        _this = this;
+        return this.perks.filter(function (perk) {
+            if ((perk.attribute_name == 'STR' && perk.attribute_level <= _this.filter.STR_level) ||
+                (perk.attribute_name == 'PER' && perk.attribute_level <= _this.filter.PER_level) ||
+                (perk.attribute_name == 'END' && perk.attribute_level <= _this.filter.END_level) ||
+                (perk.attribute_name == 'CHA' && perk.attribute_level <= _this.filter.CHA_level) ||
+                (perk.attribute_name == 'INT' && perk.attribute_level <= _this.filter.INT_level) ||
+                (perk.attribute_name == 'AGI' && perk.attribute_level <= _this.filter.AGI_level) ||
+                (perk.attribute_name == 'LCK' && perk.attribute_level <= _this.filter.LCK_level)) {
+                return perk;
+            }
+        });
+    };
     AppComponent = __decorate([
         angular2_1.Component({
             selector: 'perks',
-            template: "\n    <input type=\"text\" [(ng-model)]=\"filter.character_level\" placeholder=\"Level\" /><br />\n      <input type=\"text\" [(ng-model)]=\"filter.STR_level\" placeholder=\"STR\" />\n      <input type=\"text\" [(ng-model)]=\"filter.PER_level\" placeholder=\"PER\" />\n      <input type=\"text\" [(ng-model)]=\"filter.END_level\" placeholder=\"END\" />\n      <input type=\"text\" [(ng-model)]=\"filter.CHA_level\" placeholder=\"CHA\" />\n      <input type=\"text\" [(ng-model)]=\"filter.INT_level\" placeholder=\"INT\" />\n      <input type=\"text\" [(ng-model)]=\"filter.AGI_level\" placeholder=\"AGI\" />\n      <input type=\"text\" [(ng-model)]=\"filter.LCK_level\" placeholder=\"LCK\" />\n\n      <ul class=\"perks\">\n        <li *ng-for=\"#perk of perks\">\n          <span>{{perk.name}} {{perk.rank}} {{perk.attribute_name}} {{perk.attribute_level}} {{perk.character_level}} {{perk.description}}</span>\n        </li>\n      </ul>\n    ",
+            template: "\n      <input type=\"text\" [(ng-model)]=\"filter.character_level\" placeholder=\"Level\" /><br />\n      <input type=\"text\" [(ng-model)]=\"filter.STR_level\" placeholder=\"STR\" />\n      <input type=\"text\" [(ng-model)]=\"filter.PER_level\" placeholder=\"PER\" />\n      <input type=\"text\" [(ng-model)]=\"filter.END_level\" placeholder=\"END\" />\n      <input type=\"text\" [(ng-model)]=\"filter.CHA_level\" placeholder=\"CHA\" />\n      <input type=\"text\" [(ng-model)]=\"filter.INT_level\" placeholder=\"INT\" />\n      <input type=\"text\" [(ng-model)]=\"filter.AGI_level\" placeholder=\"AGI\" />\n      <input type=\"text\" [(ng-model)]=\"filter.LCK_level\" placeholder=\"LCK\" />\n\n      <ul class=\"perks\">\n        <li *ng-for=\"#perk of applicablePerks()\">\n          <span>{{perk.name}} {{perk.rank}} {{perk.attribute_name}} {{perk.attribute_level}} {{perk.character_level}} {{perk.description}}</span>\n        </li>\n      </ul>\n    ",
             directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])

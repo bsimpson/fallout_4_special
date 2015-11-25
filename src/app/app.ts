@@ -23,7 +23,7 @@ class Filter {
 @Component({
     selector: 'perks',
     template: `
-    <input type="text" [(ng-model)]="filter.character_level" placeholder="Level" /><br />
+      <input type="text" [(ng-model)]="filter.character_level" placeholder="Level" /><br />
       <input type="text" [(ng-model)]="filter.STR_level" placeholder="STR" />
       <input type="text" [(ng-model)]="filter.PER_level" placeholder="PER" />
       <input type="text" [(ng-model)]="filter.END_level" placeholder="END" />
@@ -33,7 +33,7 @@ class Filter {
       <input type="text" [(ng-model)]="filter.LCK_level" placeholder="LCK" />
 
       <ul class="perks">
-        <li *ng-for="#perk of perks">
+        <li *ng-for="#perk of applicablePerks()">
           <span>{{perk.name}} {{perk.rank}} {{perk.attribute_name}} {{perk.attribute_level}} {{perk.character_level}} {{perk.description}}</span>
         </li>
       </ul>
@@ -43,7 +43,24 @@ class Filter {
 
 class AppComponent {
   public perks = PERKS;
-  public filter: Filter { }
+  public filter: Filter {
+  }
+
+  applicablePerks() {
+    _this = this;
+    return this.perks.filter(function(perk) {
+    if (
+      (perk.attribute_name == 'STR' && perk.attribute_level <= _this.filter.STR_level) ||
+      (perk.attribute_name == 'PER' && perk.attribute_level <= _this.filter.PER_level) ||
+      (perk.attribute_name == 'END' && perk.attribute_level <= _this.filter.END_level) ||
+      (perk.attribute_name == 'CHA' && perk.attribute_level <= _this.filter.CHA_level) ||
+      (perk.attribute_name == 'INT' && perk.attribute_level <= _this.filter.INT_level) ||
+      (perk.attribute_name == 'AGI' && perk.attribute_level <= _this.filter.AGI_level) ||
+      (perk.attribute_name == 'LCK' && perk.attribute_level <= _this.filter.LCK_level) ) {
+        return perk;
+      }
+    });
+  }
 }
 
 bootstrap(AppComponent);
