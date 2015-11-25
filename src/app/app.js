@@ -28,13 +28,13 @@ var AppComponent = (function () {
     AppComponent.prototype.applicablePerks = function () {
         _this = this;
         return this.perks.filter(function (perk) {
-            if ((perk.attribute_name == 'STR' && perk.attribute_level <= _this.filter.STR_level) ||
-                (perk.attribute_name == 'PER' && perk.attribute_level <= _this.filter.PER_level) ||
-                (perk.attribute_name == 'END' && perk.attribute_level <= _this.filter.END_level) ||
-                (perk.attribute_name == 'CHA' && perk.attribute_level <= _this.filter.CHA_level) ||
-                (perk.attribute_name == 'INT' && perk.attribute_level <= _this.filter.INT_level) ||
-                (perk.attribute_name == 'AGI' && perk.attribute_level <= _this.filter.AGI_level) ||
-                (perk.attribute_name == 'LCK' && perk.attribute_level <= _this.filter.LCK_level)) {
+            if ((perk.attribute_name == 'STR' && perk.attribute_level <= _this.filter.STR_level && _this.filter.character_level >= perk.character_level) ||
+                (perk.attribute_name == 'PER' && perk.attribute_level <= _this.filter.PER_lev && _this.filter.character_level >= perk.character_level) ||
+                (perk.attribute_name == 'END' && perk.attribute_level <= _this.filter.END_lev && _this.filter.character_level >= perk.character_level) ||
+                (perk.attribute_name == 'CHA' && perk.attribute_level <= _this.filter.CHA_lev && _this.filter.character_level >= perk.character_level) ||
+                (perk.attribute_name == 'INT' && perk.attribute_level <= _this.filter.INT_lev && _this.filter.character_level >= perk.character_level) ||
+                (perk.attribute_name == 'AGI' && perk.attribute_level <= _this.filter.AGI_lev && _this.filter.character_level >= perk.character_level) ||
+                (perk.attribute_name == 'LCK' && perk.attribute_level <= _this.filter.LCK_lev && _this.filter.character_level >= perk.character_level)) {
                 return perk;
             }
         });
