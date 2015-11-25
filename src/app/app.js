@@ -38,6 +38,9 @@ var Perk = (function () {
         }
         return false;
     };
+    Perk.prototype.isEligible = function (filter) {
+        return this.isEligibleCharacterLevel(filter) && this.isEligibleAttributeLevel(filter);
+    };
     return Perk;
 })();
 var Filter = (function () {
@@ -62,6 +65,14 @@ var AppComponent = (function () {
             character_level: 0
         };
     }
+    AppComponent.prototype.eligiblePerks = function () {
+        var _this = this;
+        return this.perks.filter(function (perk) { return perk.isEligible(_this.filter); });
+    };
+    AppComponent.prototype.inEligiblePerks = function () {
+        var _this = this;
+        return this.perks.filter(function (perk) { return !perk.isEligible(_this.filter); });
+    };
     AppComponent = __decorate([
         angular2_1.Component({
             selector: 'perks',

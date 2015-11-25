@@ -1,13 +1,12 @@
 <form>
   <div class="column small-6 small-left">
-    <div class="row">
-      <div class="column small-12">
+    <div class="row small-up-1 medium-up-2">
+      <div class="column">
+        <div class="perk"></div>
         <label>Character Level
           <input type="number" [(ng-model)]="filter.character_level" />
         </label>
       </div>
-    </div>
-    <div class="row small-up-1 medium-up-3">
       <div class="column">
         <div class="perk">
           <div id="strength"></div>
@@ -74,8 +73,33 @@
   </div>
 
   <div class="column small-6 small-right">
+    <div class="row">
+      <span class="expanded success button">Ineligible Perks</span>
+    </div>
     <ul class="vertical menu" data-accordion-menu>
-      <li *ng-for="#perk of perks">
+      <li *ng-for="#perk of eligiblePerks()">
+        <a href="#">
+          {{perk.name}} <span class="rank_{{perk.rank}}"></span>
+          {{perk.attribute_name}}
+          <span [ng-class]="{not_eligible: !perk.isEligibleAttributeLevel(filter)}">{{perk.attribute_level}}</span>,
+          Level
+          <span [ng-class]="{not_eligible: !perk.isEligibleCharacterLevel(filter)}">{{perk.character_level}}</span>,
+        </a>
+        <ul class="menu vertical nested">
+          <li>
+            <blockquote>{{perk.description}}</blockquote>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="column small-6 small-right">
+    <div class="row">
+      <span class="expanded alert button">Ineligible Perks</span>
+    </div>
+    <ul class="vertical menu" data-accordion-menu>
+      <li *ng-for="#perk of inEligiblePerks()">
         <a href="#">
           {{perk.name}} <span class="rank_{{perk.rank}}"></span>
           {{perk.attribute_name}}

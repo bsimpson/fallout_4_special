@@ -34,12 +34,16 @@ class Perk {
       (this.attribute_name == 'CHA' && this.attribute_level <= filter.CHA_level) ||
       (this.attribute_name == 'INT' && this.attribute_level <= filter.INT_level) ||
       (this.attribute_name == 'AGI' && this.attribute_level <= filter.AGI_level) ||
-      (this.attribute_name == 'LCK' && this.attribute_level <= filter.LCK_level) ) {
+      (this.attribute_name == 'LCK' && this.attribute_level <= filter.LCK_level)
+      ) {
         return true;
       }
 
-      return false;
-    }
+    return false;
+  }
+
+  isEligible(filter) {
+    return this.isEligibleCharacterLevel(filter) && this.isEligibleAttributeLevel(filter);
   }
 }
 
@@ -76,6 +80,16 @@ class AppComponent {
     AGI_level: 0;
     LCK_level: 0;
     character_level: 0;
+  }
+
+  eligiblePerks() {
+    var _this = this;
+    return this.perks.filter(function(perk) { return perk.isEligible(_this.filter) });
+  }
+
+  inEligiblePerks() {
+    var _this = this;
+    return this.perks.filter(function(perk) { return !perk.isEligible(_this.filter) });
   }
 }
 
