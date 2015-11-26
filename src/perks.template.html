@@ -92,10 +92,13 @@
       <li *ng-for="#perk of perks | keywordSearch:filter.keyword" class="perk" [ng-class]="{eligible: perk.isEligible(filter)}">
         <a href="#">
           {{perk.name}} <span class="rank_{{perk.rank}}"></span>
-          {{perk.attribute_name}}
-          <span [ng-class]="{not_eligible: !perk.isEligibleAttributeLevel(filter)}">{{perk.attribute_level}}</span>,
-          Level
-          <span [ng-class]="{not_eligible: !perk.isEligibleCharacterLevel(filter)}">{{perk.character_level}}</span>
+          <p>
+            &nbsp; &nbsp;
+            {{perk.attribute_name}}
+            <span [ng-class]="{not_eligible: !perk.isEligibleAttributeLevel(filter)}">{{perk.attribute_level}}</span>,
+            Level
+            <span [ng-class]="{not_eligible: !perk.isEligibleCharacterLevel(filter)}">{{perk.character_level}}</span>
+          </p>
         </a>
         <ul class="menu vertical nested">
           <li>
@@ -114,10 +117,13 @@
       <li *ng-for="#perk of perks | keywordSearch:filter.keyword" class="perk" [ng-class]="{eligible: !perk.isEligible(filter)}">
         <a href="#">
           {{perk.name}} <span class="rank_{{perk.rank}}"></span>
-          {{perk.attribute_name}}
-          <span [ng-class]="{not_eligible: !perk.isEligibleAttributeLevel(filter)}">{{perk.attribute_level}}</span>,
-          Level
-          <span [ng-class]="{not_eligible: !perk.isEligibleCharacterLevel(filter)}">{{perk.character_level}}</span>
+          <p>
+            &nbsp; &nbsp;
+            {{perk.attribute_name}}
+            <span [ng-class]="{not_eligible: !perk.isEligibleAttributeLevel(filter)}">{{perk.attribute_level}}</span>,
+            Level
+            <span [ng-class]="{not_eligible: !perk.isEligibleCharacterLevel(filter)}">{{perk.character_level}}</span>
+          </p>
         </a>
         <ul class="menu vertical nested">
           <li>
