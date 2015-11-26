@@ -76,3 +76,14 @@
 .not_eligible {
   color: red;
 }
+
+li.perk {
+  height: 0;
+  visibility: hidden;
+}
+
+li.perk.eligible {
+  height: inherit;
+  visibility: visible;
+}
+
