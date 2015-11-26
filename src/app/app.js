@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var angular2_1 = require('angular2/angular2');
 var perk_data_1 = require('./perk_data');
+var keyword_search_pipe_1 = require('./keyword-search-pipe');
 var Perk = (function () {
     function Perk(options) {
         this.name = options.name;
@@ -77,7 +78,8 @@ var AppComponent = (function () {
         angular2_1.Component({
             selector: 'perks',
             templateUrl: 'perks.template.html',
-            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES]
+            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES],
+            pipes: [keyword_search_pipe_1.KeywordSearchPipe]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

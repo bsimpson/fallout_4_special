@@ -74,10 +74,15 @@
 
   <div class="column small-6 small-right">
     <div class="row">
+      <label>Filter by keyword
+        <input type="text" [(ng-model)]="filter.keyword" />
+      </label>
+    </div>
+    <div class="row">
       <span class="expanded success button">Eligible Perks</span>
     </div>
     <ul class="vertical menu" data-accordion-menu>
-      <li *ng-for="#perk of perks" class="perk" [ng-class]="{eligible: perk.isEligible(filter)}">
+      <li *ng-for="#perk of perks | keywordSearch:filter.keyword" class="perk" [ng-class]="{eligible: perk.isEligible(filter)}">
         <a href="#">
           {{perk.name}} <span class="rank_{{perk.rank}}"></span>
           {{perk.attribute_name}}
@@ -99,7 +104,7 @@
       <span class="expanded alert button">Ineligible Perks</span>
     </div>
     <ul class="vertical menu" data-accordion-menu>
-      <li *ng-for="#perk of perks" class="perk" [ng-class]="{eligible: !perk.isEligible(filter)}">
+      <li *ng-for="#perk of perks | keywordSearch:filter.keyword" class="perk" [ng-class]="{eligible: !perk.isEligible(filter)}">
         <a href="#">
           {{perk.name}} <span class="rank_{{perk.rank}}"></span>
           {{perk.attribute_name}}

@@ -1,5 +1,6 @@
 import {bootstrap, Component, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
 import {perkData} from './perk_data';
+import {KeywordSearchPipe} from './keyword-search-pipe'
 
 class Perk {
   name:             string;
@@ -56,6 +57,7 @@ class Filter {
   AGI_level: number;
   LCK_level: number;
   character_level: number;
+  keyword: string;
 }
 
 var PERKS: Perk[] = perkData.map(function(data) {
@@ -65,7 +67,8 @@ var PERKS: Perk[] = perkData.map(function(data) {
 @Component({
     selector: 'perks',
     templateUrl: 'perks.template.html',
-    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES],
+    pipes: [KeywordSearchPipe]
 })
 
 class AppComponent {
