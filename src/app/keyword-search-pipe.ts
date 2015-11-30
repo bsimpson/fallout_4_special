@@ -1,4 +1,5 @@
 import {Pipe} from 'angular2/angular2';
+import {Perk} from './perk';
 
 @Pipe({
   name: "keywordSearch"
