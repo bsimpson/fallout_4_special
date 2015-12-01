@@ -6,13 +6,11 @@ export class Perk {
   character_level:  number;
   description:      string;
 
-  constructor(options) {
-    this.name            = options.name;
-    this.rank            = options.rank;
-    this.attribute_name  = options.attribute_name;
-    this.attribute_level = options.attribute_level;
-    this.character_level = options.character_level;
-    this.description     = options.description;
+  constructor(public name
+              public rank
+              public attribute_name
+              public attribute_level
+              public character_description) {
   }
 
   isEligibleCharacterLevel(filter) {
