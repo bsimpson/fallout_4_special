@@ -1,5 +1,5 @@
 import {bootstrap, Component, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
-import {perkData} from './perk_data';
+import {perkData} from './perk-data';
 import {KeywordSearchPipe} from './keyword-search-pipe'
 import {Perk} from './perk';
 import {Filter} from './filter';

@@ -1,4 +1,4 @@
-exports.perkData = [
+ exports.perkData = [
   { "name": "Iron Fist",                 "rank": 1,  "attribute_name": "STR",  "attribute_level": 1,   "character_level":0,   "description": "Channel your chi to unleash devastating fury! Punching attacks do 20% more damage to your opponent." },
   { "name": "Iron Fist",                 "rank": 2,  "attribute_name": "STR",  "attribute_level": 1,   "character_level":9,   "description": "Punching attacks now do 40% more damage and can disarm your opponent." },
   { "name": "Iron Fist",                 "rank": 3,  "attribute_name": "STR",  "attribute_level": 1,   "character_level":18,  "description": "Punching attacks now do 60% more damage. Unarmed Power Attacks have a chance to cripple one of your opponent's limbs." },
@@ -228,4 +228,4 @@ exports.perkData = [
   { "name": "Ricochet",                  "rank": 1,  "attribute_name": "LCK",  "attribute_level": 10,  "character_level":0,   "description": "What goes around comes around! Any enemy's ranged attacks will sometimes ricochet back and instantly kill them. The closer you are to death,                          the higher the chance." },
   { "name": "Ricochet",                  "rank": 2,  "attribute_name": "LCK",  "attribute_level": 10,  "character_level":29,  "description": "There's an increased chance that an enemy's shot will ricochet back and kill them." },
   { "name": "Ricochet",                  "rank": 3,  "attribute_name": "LCK",  "attribute_level": 10,  "character_level":50,  "description": "When an enemy's shot ricochets back and kills them,                                                                                                                   there is a chance your Critical meter gets filled." }
-]
+];

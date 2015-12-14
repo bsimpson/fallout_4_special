@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
-var perk_data_1 = require('./perk_data');
+var perk_data_1 = require('./perk-data');
 var keyword_search_pipe_1 = require('./keyword-search-pipe');
 var perk_1 = require('./perk');
 var filter_1 = require('./filter');
